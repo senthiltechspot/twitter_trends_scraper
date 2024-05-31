@@ -51,4 +51,8 @@ npm start
 - Ensure Google Chrome is installed on your machine as it is required for the web scraping operations.
 - The server uses Puppeteer for browser automation and web scraping tasks.
 
+### Preview 
+
+![Twitter Web Scraper API](https://res.cloudinary.com/djlmmcnyh/image/upload/v1717171821/Screenshot_2024-05-31_160326_gaom66.png)
+
 This README provides the basic setup instructions for running the Twitter Web Scraper API locally. Ensure you have all prerequisites installed and environment variables set up correctly for smooth operation.
