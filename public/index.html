@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Twitter Scraper</title>
+</head>
+<body>
+  <h1>Twitter Scraper</h1>
+  <p>Click the button below to fetch the top 5 trending topics on Twitter:</p>
+  <button id="fetchButton">Fetch Trending Topics</button>
+  <div id="trendingTopics"></div>
+
+  <script>
+    document.getElementById("fetchButton").addEventListener("click", async () => {
+      try {
+        const response = await fetch("/fetch-trends");
+        const data = await response.json();
+        if (data && data.trends) {
+          renderTrendingTopics(data.trends, data.ip_address);
+        } else {
+          renderErrorMessage("Failed to fetch trending topics.");
+        }
+      } catch (error) {
+        renderErrorMessage("An error occurred while fetching trending topics.");
+        console.error("Error fetching trending topics:", error);
+      }
+    });
+
+    function renderTrendingTopics(trends, ip_address) {
+      const trendingTopicsElement = document.getElementById("trendingTopics");
+      const date = new Date().toLocaleString();
+      const htmlResponse = `
+        <h1>These are the most happening topics as on ${date}</h1>
+        <ul>
+          ${trends.map(trend => `<li>${trend}</li>`).join("")}
+        </ul>
+        <p>The IP address used for this query was ${ip_address}.</p>
+        <button id="fetchAgainButton">Click here to run the query again.</button>
+      `;
+      trendingTopicsElement.innerHTML = htmlResponse;
+
+      // Add event listener to the fetch again button
+      document.getElementById("fetchAgainButton").addEventListener("click", () => {
+        document.getElementById("fetchButton").click();
+      });
+    }
+
+    function renderErrorMessage(message) {
+      const trendingTopicsElement = document.getElementById("trendingTopics");
+      trendingTopicsElement.innerHTML = `<p>${message}</p>`;
+    }
+  </script>
+</body>
+</html>
