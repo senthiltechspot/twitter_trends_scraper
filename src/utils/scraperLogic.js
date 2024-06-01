@@ -1,3 +1,4 @@
+require('chromedriver');
 const { Builder, By, until } = require("selenium-webdriver");
 const axios = require("axios");
 const dotenv = require("dotenv");
