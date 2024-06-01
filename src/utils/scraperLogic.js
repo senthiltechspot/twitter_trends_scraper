@@ -84,6 +84,7 @@ async function fetchTrendingTopics(driver) {
 async function scrapeTwitter() {
   const chrome = require("selenium-webdriver/chrome");
   const options = new chrome.Options();
+  options.addArguments("--headless=new");
   options.addArguments("start-maximized");
   options.addArguments("--disable-gpu");
   options.addArguments("--no-sandbox");
