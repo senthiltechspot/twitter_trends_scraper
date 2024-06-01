@@ -1,5 +1,7 @@
 const { Builder, By, until } = require("selenium-webdriver");
 const axios = require("axios");
+const dotenv = require("dotenv");
+dotenv.config();
 
 const TWITTER_USERNAME = process.env.TWITTER_USERNAME;
 const TWITTER_PASSWORD = process.env.TWITTER_PASSWORD;

@@ -2,7 +2,9 @@ const express = require("express");
 const mongoose = require("mongoose");
 const { runScript } = require("./controllers/scraperController");
 const { MONGODB_URI, DB_NAME } = require("./config/db");
+const dotenv = require("dotenv");
 
+dotenv.config();
 const app = express();
 
 // Serve static files from the public directory
